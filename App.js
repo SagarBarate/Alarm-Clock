@@ -5,6 +5,7 @@ const setTime = setAlarm.getElementsByClassName("setTime");
 const curr = document.createElement("div");
 curr.setAttribute("id", "currentTimeof");
 
+
 // curr.appendChild(document.createTextNode("dsfakojoa"));
 document.getElementById("container").appendChild(curr);
 // Current time
