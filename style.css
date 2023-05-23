@@ -24,6 +24,43 @@ body{
 
 }
 
+.timer-display{
+    font-size: 2.18em;
+    text-align: center;
+    font-family: "Roboto Mono", monospace;
+}
+
+/* created input flex and set its properties */
+.inputs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap :1em;
+    margin-top: 2em;
+
+}
+.inputs input{
+    width: 2.8em;
+    font-size: 1.3em;
+    border: 1px solid #000000;
+    border-radius: 0.3em;
+    padding: 0.4em 0.2em;
+}
+/* set botton */
+#set{
+    background-color: #377dff;
+    border: none;
+    padding: 0.9em 1.8em;
+    display: block;
+    margin: 1.5em auto 0 auto;
+    border-radius: 2em;
+    color: #ffffff;
+
+}
+
+
+
+
 
 #container{
     background-color: bisque;
