@@ -40,6 +40,7 @@ const updateCurrentTime = () => {
 
 setInterval(() => {
   updateCurrentTime();
+
 }, 1000);
 // const mycock = () =>{
 //     let hourInput = document.createElement("select");
