@@ -2,6 +2,7 @@
 let timerRef = document.querySelector(".timer-display");
 const hourInput = document.getElementById("hourInput");
 const minuteInput = document.getElementById("minuteInput");
+
 let activeAlarms = document.querySelector(".activeAlarms");
 const setAlarm = document.getElementById("set");
 let alarmsArray = [];
@@ -32,11 +33,24 @@ const searchObject = (parameter, value) => {
 
 //Display Time
 function displayTimer() {
+
   let date = new Date();
-  let [hours, minutes, seconds] = [
-    appendZero(date.getHours()),
-    appendZero(date.getMinutes()),
-    appendZero(date.getSeconds()),
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var seconds = date.getSeconds();
+  var period = hours >= 12 ? 'PM' : 'AM';
+
+  // Convert to 12-hour format
+  hours = hours % 12;
+  hours = hours ? hours : 12; // 0 should be treated as 12
+
+  // Add leading zeros to minutes and seconds
+  
+  [hours, minutes, seconds] = [
+    appendZero(hours),
+    appendZero(minutes),
+    appendZero(seconds),
+
   ];
 
   //Display time
@@ -118,6 +132,8 @@ setAlarm.addEventListener("click", () => {
   hourInput.value = appendZero(initialHour);
   minuteInput.value = appendZero(initialMinute);
 });
+
+
 
 //Start Alarm
 const startAlarm = (e) => {
