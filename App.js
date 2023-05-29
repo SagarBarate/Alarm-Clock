@@ -2,7 +2,7 @@
 let timerRef = document.querySelector(".timer-display");
 const hourInput = document.getElementById("hourInput");
 const minuteInput = document.getElementById("minuteInput");
-const activeAlarms = document.querySelector(".activeAlarms");
+let activeAlarms = document.querySelector(".activeAlarms");
 const setAlarm = document.getElementById("set");
 let alarmsArray = [];
 let alarmSound = new Audio("./alarm.mp3");
@@ -72,6 +72,7 @@ minuteInput.addEventListener("input", () => {
 //Create alarm div
 
 const createAlarm = (alarmObj) => {
+  console.log('1', activeAlarms)
   //Keys from object
   const { id, alarmHour, alarmMinute } = alarmObj;
   //Alarm div
@@ -92,6 +93,7 @@ const createAlarm = (alarmObj) => {
   });
   alarmDiv.appendChild(checkbox);
   //Delete button
+
   let deleteButton = document.createElement("button");
   deleteButton.innerHTML = `<i class="fa-solid fa-trash"></i>`;
   deleteButton.classList.add("deleteButton");
@@ -155,9 +157,6 @@ window.onload = () => {
   hourInput.value = appendZero(initialHour);
   minuteInput.value = appendZero(initialMinute);
 };
-
-
-
 
 
 

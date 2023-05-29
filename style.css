@@ -72,4 +72,21 @@ body{
     text-align: center;
 }
 
+.alarm{
+    border : 1px solid blue;
+    display: flex;
+    justify-content: center;
+    width: 350px;
+    height: 50px;
+}
 
+.alarm span{
+    border : 1px solid red;  background-color: #ffffff;
+    max-width: 2.25em;
+    /* padding: 1.12em 5em; */
+    /* position: absolute; */
+    transform: translate(-5%);
+    /* left: 10%; */
+    top:1em;
+    border-radius: 0.5em;
+}
