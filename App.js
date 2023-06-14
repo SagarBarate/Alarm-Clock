@@ -2,6 +2,7 @@
 let timerRef = document.querySelector(".timer-display");
 const hourInput = document.getElementById("hourInput");
 const minuteInput = document.getElementById("minuteInput");
+const secInput = document.getElementById("secondInput");
 
 let activeAlarms = document.querySelector(".activeAlarms");
 const setAlarm = document.getElementById("set");
@@ -10,6 +11,7 @@ let alarmSound = new Audio("./alarm.mp3");
 
 let initialHour = 0,
   initialMinute = 0,
+  initialsec=0,
   alarmIndex = 0;
 
 //Append zeroes for single digit
@@ -59,9 +61,9 @@ function displayTimer() {
   //Alarm
   alarmsArray.forEach((alarm, index) => {
     if (alarm.isActive) {
-      if (`${alarm.alarmHour}:${alarm.alarmMinute}` === `${hours}:${minutes}`) {
-        alarmSound.play();
-        alarmSound.loop = true;
+      if (`${alarm.alarmHour}:${alarm.alarmMinute}:${alarm.alarmsec}` === `${hours}:${minutes}:${seconds}`) {
+        flashScreen();
+        
       }
     }
   });
@@ -82,18 +84,22 @@ hourInput.addEventListener("input", () => {
 minuteInput.addEventListener("input", () => {
   minuteInput.value = inputCheck(minuteInput.value);
 });
+secInput.addEventListener("input", () => {
+  secInput.value = inputCheck(secInput.value);
+});
 
 //Create alarm div
 
 const createAlarm = (alarmObj) => {
   console.log('1', activeAlarms)
   //Keys from object
-  const { id, alarmHour, alarmMinute } = alarmObj;
+  const { id, alarmHour, alarmMinute, alarmsec} = alarmObj;
   //Alarm div
   let alarmDiv = document.createElement("div");
   alarmDiv.classList.add("alarm");
   alarmDiv.setAttribute("data-id", id);
-  alarmDiv.innerHTML = `<span>${alarmHour}: ${alarmMinute}</span>`;
+
+  alarmDiv.innerHTML = `<span>${alarmHour}: ${alarmMinute} :${alarmsec}</span>`;
 
   //checkbox
   let checkbox = document.createElement("input");
@@ -116,8 +122,11 @@ const createAlarm = (alarmObj) => {
   activeAlarms.appendChild(alarmDiv);
 };
 
+
+
 //Set Alarm
 setAlarm.addEventListener("click", () => {
+
   alarmIndex += 1;
 
   //alarmObject
@@ -125,12 +134,17 @@ setAlarm.addEventListener("click", () => {
   alarmObj.id = `${alarmIndex}_${hourInput.value}_${minuteInput.value}`;
   alarmObj.alarmHour = hourInput.value;
   alarmObj.alarmMinute = minuteInput.value;
+  alarmObj.alarmsec=secInput.value;
   alarmObj.isActive = false;
+  
   console.log(alarmObj);
+
   alarmsArray.push(alarmObj);
   createAlarm(alarmObj);
+
   hourInput.value = appendZero(initialHour);
   minuteInput.value = appendZero(initialMinute);
+  secInput.value=appendZero(initialsec);
 });
 
 
@@ -144,6 +158,7 @@ const startAlarm = (e) => {
   }
 };
 
+
 //Stop alarm
 const stopAlarm = (e) => {
   let searchId = e.target.parentElement.getAttribute("data-id");
@@ -153,6 +168,7 @@ const stopAlarm = (e) => {
     alarmSound.pause();
   }
 };
+
 
 //delete alarm
 const deleteAlarm = (e) => {
@@ -164,6 +180,8 @@ const deleteAlarm = (e) => {
   }
 };
 
+
+
 window.onload = () => {
   setInterval(displayTimer);
   initialHour = 0;
@@ -172,6 +190,7 @@ window.onload = () => {
   alarmsArray = [];
   hourInput.value = appendZero(initialHour);
   minuteInput.value = appendZero(initialMinute);
+  secInput.value=appendZero(initialsec);
 };
 
 
