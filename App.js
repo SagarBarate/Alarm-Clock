@@ -6,6 +6,7 @@ const secInput = document.getElementById("secondInput");
 
 const currentDateRef = document.querySelector(".currentDate"); //display date 
 function displayCurrentDate() {
+  currentDateRef.innerHTML = `<i class="fa-sharp fa-solid fa-calendar-days"></i>`;
   const currentDate = new Date();
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   const formattedDate = currentDate.toLocaleDateString(undefined, options);
