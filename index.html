@@ -1,51 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="style.css">
-    <title>Alarm Clock</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
-    
-  </head>
-  <body>
+<head>
+  <link rel="stylesheet" href="style.css">
+  <title>Alarm Clock</title>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" /> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/> -->
 
-    <div class="wrapper">
-      <div class="timer-display">00:00:00</div>
-      <div class="container">
-        <div class="inputs">
-          <input type="number" id="hourInput" placeholder="00" min="0" max="12"/>
-          <input type="number" id="minuteInput" placeholder="00" min="0" max="59"/>
-          <input type="number"  id="secondInput" placeholder="00" min="0" max="59"/>
-          <select id="ampm-dropdown"><option value="AM">AM</option><option value="PM">PM</option></select>
-        </div> 
-        <button id="set"> <b>Add Alarm</b></button>
+</head>
+
+<body>
+  
+
+  <h1 id="heading">Aalarm Clock</h1>
+  <div class="wrapper">
+    <div class="timer-display">00:00:00</div>
+    <div class="container">
+      <div class="inputs">
+        <input type="number" id="hourInput" placeholder="00" min="0" max="12" />
+        <input type="number" id="minuteInput" placeholder="00" min="0" max="59" />
+        <input type="number" id="secondInput" placeholder="00" min="0" max="59" />
+        <select id="ampm-dropdown">
+          <option value="AM">AM</option>
+          <option value="PM">PM</option>
+        </select>
       </div>
-      <div class="activeAlarms"></div>
+      <button id="set"> <b>Add Alarm</b></button>
     </div>
+    <div class="activeAlarms"></div>
   </div>
+  <!-- </div> -->
 
 
-     <!-- <div id="container"> -->
-      <!-- <div id="currentTime"></div> -->
-<!-- 
+  <!-- <div id="container"> -->
+  <!-- <div id="currentTime"></div> -->
+  <!-- 
       <div id="setAlarm">
         <div class="setTime"> -->
-            <!-- time input to be set we can take multible box for input for perticular section -->
-        <!-- </div> -->
+  <!-- time input to be set we can take multible box for input for perticular section -->
+  <!-- </div> -->
 
-        <!-- <div class="setTime-button">
+  <!-- <div class="setTime-button">
           <button id="set-btn">Set Alarm</button>
         </div> -->
-      <!-- </div> -->
-      <!-- <div id="showAlarm">
+  <!-- </div> -->
+  <!-- <div id="showAlarm">
             <h2>Alarms</h2>
             <ul id="alarmList">
 
             </ul>
       </div> -->
 
-    </div>
+  <!-- </div> -->
 
-    <script src="/App.js"></script> 
-  </body>
+  <script src="/App.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+</body>
+
 </html>

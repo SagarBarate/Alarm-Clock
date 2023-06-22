@@ -63,6 +63,10 @@ function displayTimer() {
     if (alarm.isActive) {
       if (`${alarm.alarmHour}:${alarm.alarmMinute}:${alarm.alarmsec}` === `${hours}:${minutes}:${seconds}`) {
         flashScreen();
+        const audio = new Audio('./alarm.mp3');
+        // Play the audio
+        audio.play();
+        alert("It's time to wakeup !!!!!");
         
       }
     }
@@ -180,7 +184,23 @@ const deleteAlarm = (e) => {
   }
 };
 
+function flashScreen() {
+  var body = document.body;
+  var colors = ['#ff0000', '#ffff00']; // Define the colors to alternate
 
+  var intervalId = setInterval(function() {
+    body.style.backgroundColor = colors[0]; // Set the first color
+    colors.push(colors.shift()); // Move the first color to the end
+
+    // Stop the flashing after a certain number of iterations
+    if (--iterations === 0) {
+      clearInterval(intervalId);
+      body.style.backgroundColor = '#377dff'; // Reset the background color
+    }
+  }, 500); // Interval duration in milliseconds
+
+  var iterations = 10; // Number of iterations or flashes
+}
 
 window.onload = () => {
   setInterval(displayTimer);
