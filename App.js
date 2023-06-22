@@ -4,9 +4,12 @@ const hourInput = document.getElementById("hourInput");
 const minuteInput = document.getElementById("minuteInput");
 const secInput = document.getElementById("secondInput");
 
+
 let activeAlarms = document.querySelector(".activeAlarms");
 const setAlarm = document.getElementById("set");
 let alarmsArray = [];
+let selectElement = document.getElementById("ampm");
+
 let alarmSound = new Audio("./alarm.mp3");
 
 let initialHour = 0,
@@ -40,12 +43,17 @@ function displayTimer() {
   var hours = date.getHours();
   var minutes = date.getMinutes();
   var seconds = date.getSeconds();
-  var period = hours >= 12 ? 'PM' : 'AM';
+  // var period = hours >= 12 ? 'PM' : 'AM';
+
+  // Determine AM/PM based on the original hour value
+  const period = parseInt(hours) >= 12 ? 'PM' : 'AM';
+  
+  
 
   // Convert to 12-hour format
   hours = hours % 12;
   hours = hours ? hours : 12; // 0 should be treated as 12
-
+  // const period = parseInt(alarmHour) >= 12 ? 'PM' : 'AM';
   // Add leading zeros to minutes and seconds
   
   [hours, minutes, seconds] = [
@@ -56,7 +64,7 @@ function displayTimer() {
   ];
 
   //Display time
-  timerRef.innerHTML = `${hours}:${minutes}:${seconds}`;
+  timerRef.innerHTML = `${hours}:${minutes}:${seconds} ${period}`;
 
   //Alarm
   alarmsArray.forEach((alarm, index) => {
@@ -93,19 +101,16 @@ secInput.addEventListener("input", () => {
 });
 
 //Create alarm div
-
 const createAlarm = (alarmObj) => {
-  console.log('1', activeAlarms)
-  //Keys from object
-  const { id, alarmHour, alarmMinute, alarmsec} = alarmObj;
-  //Alarm div
+  const { id, alarmHour, alarmMinute, alarmsec ,period} = alarmObj; //object destructuring 
+  
+  // Alarm div
   let alarmDiv = document.createElement("div");
   alarmDiv.classList.add("alarm");
   alarmDiv.setAttribute("data-id", id);
+  alarmDiv.innerHTML = `<span>${alarmHour}:${alarmMinute}:${alarmsec} ${period}</span>`;
 
-  alarmDiv.innerHTML = `<span>${alarmHour}: ${alarmMinute} :${alarmsec}</span>`;
-
-  //checkbox
+  // Checkbox
   let checkbox = document.createElement("input");
   checkbox.setAttribute("type", "checkbox");
   checkbox.addEventListener("click", (e) => {
@@ -116,15 +121,17 @@ const createAlarm = (alarmObj) => {
     }
   });
   alarmDiv.appendChild(checkbox);
-  //Delete button
-
+  
+  // Delete button
   let deleteButton = document.createElement("button");
   deleteButton.innerHTML = `<i class="fa-solid fa-trash"></i>`;
   deleteButton.classList.add("deleteButton");
   deleteButton.addEventListener("click", (e) => deleteAlarm(e));
   alarmDiv.appendChild(deleteButton);
+  
   activeAlarms.appendChild(alarmDiv);
 };
+
 
 
 
@@ -139,6 +146,7 @@ setAlarm.addEventListener("click", () => {
   alarmObj.alarmHour = hourInput.value;
   alarmObj.alarmMinute = minuteInput.value;
   alarmObj.alarmsec=secInput.value;
+  alarmObj.period = selectElement.value;
   alarmObj.isActive = false;
   
   console.log(alarmObj);
@@ -163,6 +171,16 @@ const startAlarm = (e) => {
 };
 
 
+//delete alarm
+const deleteAlarm = (e) => {
+  let searchId = e.target.parentElement.parentElement.getAttribute("data-id");
+  let [exists, obj, index] = searchObject("id", searchId);
+  if (exists) {
+    e.target.parentElement.parentElement.remove();
+    alarmsArray.splice(index, 1);
+  }
+};
+
 //Stop alarm
 const stopAlarm = (e) => {
   let searchId = e.target.parentElement.getAttribute("data-id");
@@ -174,15 +192,6 @@ const stopAlarm = (e) => {
 };
 
 
-//delete alarm
-const deleteAlarm = (e) => {
-  let searchId = e.target.parentElement.parentElement.getAttribute("data-id");
-  let [exists, obj, index] = searchObject("id", searchId);
-  if (exists) {
-    e.target.parentElement.parentElement.remove();
-    alarmsArray.splice(index, 1);
-  }
-};
 
 function flashScreen() {
   var body = document.body;
@@ -201,6 +210,8 @@ function flashScreen() {
 
   var iterations = 10; // Number of iterations or flashes
 }
+
+
 
 window.onload = () => {
   setInterval(displayTimer);
