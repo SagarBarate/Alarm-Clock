@@ -4,6 +4,13 @@ const hourInput = document.getElementById("hourInput");
 const minuteInput = document.getElementById("minuteInput");
 const secInput = document.getElementById("secondInput");
 
+const currentDateRef = document.querySelector(".currentDate"); //display date 
+function displayCurrentDate() {
+  const currentDate = new Date();
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const formattedDate = currentDate.toLocaleDateString(undefined, options);
+  currentDateRef.textContent = formattedDate;
+}
 
 let activeAlarms = document.querySelector(".activeAlarms");
 const setAlarm = document.getElementById("set");
@@ -222,6 +229,7 @@ window.onload = () => {
   hourInput.value = appendZero(initialHour);
   minuteInput.value = appendZero(initialMinute);
   secInput.value=appendZero(initialsec);
+  displayCurrentDate();
 };
 
 

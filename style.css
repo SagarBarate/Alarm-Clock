@@ -10,6 +10,7 @@ body{
 }
 #heading{
     margin-top: 40px;
+    color: white;
 
 }
 .hide{
@@ -82,6 +83,15 @@ body{
     padding: 0.4em 0.2em;
 
 }
+.currentDate{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap :1em;
+    /* margin-top: 2em; */
+    margin-bottom: 30px;
+}
+
 
 .alarm{
     display: grid;
