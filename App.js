@@ -236,27 +236,7 @@ window.onload = () => {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//another brootforce approch to build app 
 
 
 //const container = document.getElementById("container");
