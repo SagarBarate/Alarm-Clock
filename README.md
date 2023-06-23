@@ -3,7 +3,7 @@
 This Alarm-clock web application that allows users to Set multiple alarms with custom hours, minutes, and seconds.Choose between AM and PM for each alarm.View the current date and time, including AM or PM.Receive visual and audible notifications when an alarm goes off.Easily manage and delete active alarms.
 With this alarm clock, you can wake up on time, stay organized, and start your day with efficiency.
 
-Deploy Link: https://modesens-web16.herokuapp.com/
+Deploy Link: https://genuine-concha-0296f9.netlify.app/
 
 # Some glimpse from our Website
 
@@ -40,8 +40,5 @@ Deploy Link: https://modesens-web16.herokuapp.com/
 </ul>
 
 
-Stop Alarm
-
-Delete Alarm
 
 
