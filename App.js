@@ -5,6 +5,8 @@ const minuteInput = document.getElementById("minuteInput");
 const secInput = document.getElementById("secondInput");
 
 const currentDateRef = document.querySelector(".currentDate"); //display date 
+
+
 function displayCurrentDate() {
   currentDateRef.innerHTML = `<i class="fa-sharp fa-solid fa-calendar-days"></i>`;
   const currentDate = new Date();

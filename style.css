@@ -6,13 +6,9 @@
 }
 
 body{
-    background-color:#377dff;
+    background-color:#377dff !important;
 }
-#heading{
-    margin-top: 40px;
-    color: white;
 
-}
 .hide{
     display: none;
 }
@@ -54,7 +50,7 @@ body{
 }
 /* set botton */
 #set{
-    background-color: #377dff;
+    background-color: #377dff ;
     border: none;
     padding: 0.9em 1.8em;
     display: block;
